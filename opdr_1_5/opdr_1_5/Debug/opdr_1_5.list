@@ -1,0 +1,61 @@
+
+opdr_1_5.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000038  08000000  08000000  00010000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  20000000  20000000  00010038  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .ARM.attributes 00000025  00000000  00000000  00010038  2**0
+                  CONTENTS, READONLY
+  3 .debug_line   0000004b  00000000  00000000  0001005d  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  4 .debug_info   00000026  00000000  00000000  000100a8  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  5 .debug_abbrev 00000014  00000000  00000000  000100ce  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  6 .debug_aranges 00000020  00000000  00000000  000100e8  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  7 .debug_str    00000052  00000000  00000000  00010108  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+
+Disassembly of section .text:
+
+08000000 <main>:
+ 8000000:	49052008 	.word	0x49052008
+ 8000004:	20556008 	.word	0x20556008
+ 8000008:	49040600 	.word	0x49040600
+ 800000c:	20006008 	.word	0x20006008
+ 8000010:	60084903 	.word	0x60084903
+ 8000014:	031b230f 	.word	0x031b230f
+ 8000018:	40023830 	.word	0x40023830
+ 800001c:	40020c00 	.word	0x40020c00
+ 8000020:	40020c14 	.word	0x40020c14
+
+08000024 <loop>:
+		.short  0x0600, 0x4904, 0x6008, 0x2000
+		.short  0x4903, 0x6008, 0x230f, 0x031b
+		// literals needed by machine code
+		.word	0x40023830, 0x40020c00, 0x40020c14
+		// loop in Pinky assembler code
+loop:   LDR.N   R2, =1333332 // just some random value!
+ 8000024:	4a03      	ldr	r2, [pc, #12]	; (8000034 <wait+0xe>)
+
+08000026 <wait>:
+wait:	SUBS.N  R2, #1
+ 8000026:	3a01      	subs	r2, #1
+		BNE.N   wait
+ 8000028:	d1fd      	bne.n	8000026 <wait>
+		NOP.N
+ 800002a:	bf00      	nop
+		// toggle leds
+		EORS.N  R0, R0, R3
+ 800002c:	4058      	eors	r0, r3
+		STR.N   R0, [R1, #0]
+ 800002e:	6008      	str	r0, [r1, #0]
+		B.N		loop
+ 8000030:	e7f8      	b.n	8000024 <loop>
+ 8000032:	0000      	.short	0x0000
+loop:   LDR.N   R2, =1333332 // just some random value!
+ 8000034:	00145854 	.word	0x00145854
