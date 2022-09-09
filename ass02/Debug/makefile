@@ -59,8 +59,8 @@ all: main-build
 main-build: ass02.elf secondary-outputs
 
 # Tool invocations
-ass02.elf ass02.map: $(OBJS) $(USER_OBJS) C:\Users\Max\ Overvoorde\STM32CubeIDE\workspace_1.10.1\ass02\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "ass02.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Max Overvoorde\STM32CubeIDE\workspace_1.10.1\ass02\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ass02.map" -Wl,--gc-sections -static -specs=rdimon.specs --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ass02.elf ass02.map: $(OBJS) $(USER_OBJS) C:\Users\Max\ Overvoorde\Documents\School\Hogeschool\ Rotterdam\github\ETS10\1.5\RTS10\ass02\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ass02.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Max Overvoorde\Documents\School\Hogeschool Rotterdam\github\ETS10\1.5\RTS10\ass02\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ass02.map" -Wl,--gc-sections -static -specs=rdimon.specs --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
