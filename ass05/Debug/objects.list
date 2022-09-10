@@ -1,0 +1,3 @@
+"./Core/Src/main.o"
+"./Core/Src/test.o"
+"./Core/Startup/startup_stm32f411vetx.o"
