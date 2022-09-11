@@ -8,21 +8,27 @@
 multiply:
 	MOVS.N R2, #0				// making variable for return value, R2 = m, R3 = i
 	MOVS.N R3, #0
-loop:
-	ADD.N	R2, R2, R1			// m = m + b
-	SUBS.N	R0, #1				// A = A - 1
+check:
 	CMP.N	R0, #0				// if A = 0
 	BNE.N 	loop				// als ie niet gelijk is aan 0, jump naar loop
 	MOVS.N 	R0, R2				// return M als return waarde
 	BX.N	LR					// weten we niet helemaal zeker
+loop:
+	ADD.N	R2, R2, R1			// m = m + b
+	SUBS.N	R0, #1				// A = A - 1
+	B.N		check
 
 power:
-	PUSH.N {LR}
-	CMP.N 	R1, #0
+	PUSH.N 	{LR}
 	MOVS.N	R2, #1
-	BNE.N	while_loop
+	CMP.N 	R1, #0
+	BNE.N	check_loop
 	MOVS.N 	R0, #1
 	BX.N	LR						// volgorde: R0 = n, R1 = m, R2 = p
+
+check_loop:
+	CMP.N	R1, #1
+	BEQ.N	return
 while_loop:
 	MOVS.N	R3, #1					// r3 = 1
 	ANDS.N	R3, R3, R1				// R1 is even of oneven
@@ -49,6 +55,7 @@ skip:
 	CMP.N	R1, #1
 	NOP.N
 	BNE.N	while_loop
+return:
 	MOVS.N 	R1, R2					// volgorde R0 = n, R1 = p, R2 = p, R3 = x
 	LDR.N	R2, =multiply
 	BLX.N	R2
