@@ -53,7 +53,6 @@ skip:
 	POP.N 	{R1, R2}				// volgorde: R0 = n, R1 = m, R2 = p, R3 = x
 	LSRS.N	R1, R1, #1
 	CMP.N	R1, #1
-	NOP.N
 	BNE.N	while_loop
 return:
 	MOVS.N 	R1, R2					// volgorde R0 = n, R1 = p, R2 = p, R3 = x
