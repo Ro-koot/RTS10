@@ -60,8 +60,8 @@ all: main-build
 main-build: Opdr_2_3.elf secondary-outputs
 
 # Tool invocations
-Opdr_2_3.elf Opdr_2_3.map: $(OBJS) $(USER_OBJS) C:\Users\Max\ Overvoorde\STM32CubeIDE\workspace_1.10.1\Opdr_2_3\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Opdr_2_3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Max Overvoorde\STM32CubeIDE\workspace_1.10.1\Opdr_2_3\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Opdr_2_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Opdr_2_3.elf Opdr_2_3.map: $(OBJS) $(USER_OBJS) C:\Users\Max\ Overvoorde\Documents\School\Hogeschool\ Rotterdam\github\ETS10\1.5\RTS10\Opdr_2_3\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Opdr_2_3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Max Overvoorde\Documents\School\Hogeschool Rotterdam\github\ETS10\1.5\RTS10\Opdr_2_3\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Opdr_2_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

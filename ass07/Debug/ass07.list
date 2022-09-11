@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00001c06  00000000  00000000  00020548  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00000758  00000000  00000000  0002214e  2**0
+ 17 .debug_line   00000757  00000000  00000000  0002214e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00007ba0  00000000  00000000  000228a6  2**0
+ 18 .debug_str    00007ba0  00000000  00000000  000228a5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  0002a446  2**0
+ 19 .comment      00000050  00000000  00000000  0002a445  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00000ef8  00000000  00000000  0002a498  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -88,129 +88,128 @@ Disassembly of section .text:
 multiply:
 	MOVS.N R2, #0				// making variable for return value, R2 = m, R3 = i
  80001e0:	2200      	movs	r2, #0
-	MOVS.N R3, #0
- 80001e2:	2300      	movs	r3, #0
 
-080001e4 <check>:
+080001e2 <check>:
 check:
 	CMP.N	R0, #0				// if A = 0
- 80001e4:	2800      	cmp	r0, #0
+ 80001e2:	2800      	cmp	r0, #0
 	BNE.N 	loop				// als ie niet gelijk is aan 0, jump naar loop
- 80001e6:	d101      	bne.n	80001ec <loop>
+ 80001e4:	d101      	bne.n	80001ea <loop>
 	MOVS.N 	R0, R2				// return M als return waarde
- 80001e8:	0010      	movs	r0, r2
+ 80001e6:	0010      	movs	r0, r2
 	BX.N	LR					// weten we niet helemaal zeker
- 80001ea:	4770      	bx	lr
+ 80001e8:	4770      	bx	lr
 
-080001ec <loop>:
+080001ea <loop>:
 loop:
 	ADD.N	R2, R2, R1			// m = m + b
- 80001ec:	440a      	add	r2, r1
+ 80001ea:	440a      	add	r2, r1
 	SUBS.N	R0, #1				// A = A - 1
- 80001ee:	3801      	subs	r0, #1
+ 80001ec:	3801      	subs	r0, #1
 	B.N		check
- 80001f0:	e7f8      	b.n	80001e4 <check>
+ 80001ee:	e7f8      	b.n	80001e2 <check>
 
-080001f2 <power>:
+080001f0 <power>:
 
 power:
 	PUSH.N 	{LR}
- 80001f2:	b500      	push	{lr}
+ 80001f0:	b500      	push	{lr}
 	MOVS.N	R2, #1
- 80001f4:	2201      	movs	r2, #1
+ 80001f2:	2201      	movs	r2, #1
 	CMP.N 	R1, #0
- 80001f6:	2900      	cmp	r1, #0
+ 80001f4:	2900      	cmp	r1, #0
 	BNE.N	check_loop
- 80001f8:	d101      	bne.n	80001fe <check_loop>
+ 80001f6:	d101      	bne.n	80001fc <check_loop>
 	MOVS.N 	R0, #1
- 80001fa:	2001      	movs	r0, #1
+ 80001f8:	2001      	movs	r0, #1
 	BX.N	LR						// volgorde: R0 = n, R1 = m, R2 = p
- 80001fc:	4770      	bx	lr
+ 80001fa:	4770      	bx	lr
 
-080001fe <check_loop>:
+080001fc <check_loop>:
 
 check_loop:
 	CMP.N	R1, #1
- 80001fe:	2901      	cmp	r1, #1
+ 80001fc:	2901      	cmp	r1, #1
 	BEQ.N	return
- 8000200:	d016      	beq.n	8000230 <return>
+ 80001fe:	d016      	beq.n	800022e <return>
 
-08000202 <while_loop>:
+08000200 <while_loop>:
 while_loop:
 	MOVS.N	R3, #1					// r3 = 1
- 8000202:	2301      	movs	r3, #1
+ 8000200:	2301      	movs	r3, #1
 	ANDS.N	R3, R3, R1				// R1 is even of oneven
- 8000204:	400b      	ands	r3, r1
+ 8000202:	400b      	ands	r3, r1
 	CMP.N	R3, #1					//--> immediately lose function of R3
- 8000206:	2b01      	cmp	r3, #1
+ 8000204:	2b01      	cmp	r3, #1
 	BNE.N	skip
- 8000208:	d10a      	bne.n	8000220 <skip>
+ 8000206:	d10a      	bne.n	800021e <skip>
 	MOVS.N	R3, R1
- 800020a:	000b      	movs	r3, r1
+ 8000208:	000b      	movs	r3, r1
 	MOVS.N	R1, R0
- 800020c:	0001      	movs	r1, r0
+ 800020a:	0001      	movs	r1, r0
 	MOVS.N	R0, R2
- 800020e:	0010      	movs	r0, r2
+ 800020c:	0010      	movs	r0, r2
 	MOVS.N	R2, R3					// volgorde: R0 = p, R1 = n, R2 = m, R3 = m
- 8000210:	001a      	movs	r2, r3
+ 800020e:	001a      	movs	r2, r3
 	PUSH.N	{R1, R2, R3}			//--> push value of R1R2R3 on stack
- 8000212:	b40e      	push	{r1, r2, r3}
+ 8000210:	b40e      	push	{r1, r2, r3}
 	LDR.N	R2, =multiply
- 8000214:	4a09      	ldr	r2, [pc, #36]	; (800023c <return+0xc>)
+ 8000212:	4a09      	ldr	r2, [pc, #36]	; (8000238 <return+0xa>)
 	BLX.N	R2
- 8000216:	4790      	blx	r2
+ 8000214:	4790      	blx	r2
 	POP.N 	{R1, R2, R3}
- 8000218:	bc0e      	pop	{r1, r2, r3}
+ 8000216:	bc0e      	pop	{r1, r2, r3}
 	MOVS.N 	R2, R0
- 800021a:	0002      	movs	r2, r0
+ 8000218:	0002      	movs	r2, r0
 	MOVS.N 	R0, R1
- 800021c:	0008      	movs	r0, r1
+ 800021a:	0008      	movs	r0, r1
 	MOVS.N 	R1, R3					// volgorde: R0 = n, R1 = m, R2 = p, R3 = m
- 800021e:	0019      	movs	r1, r3
+ 800021c:	0019      	movs	r1, r3
 
-08000220 <skip>:
+0800021e <skip>:
 skip:
 	PUSH.N	{R1, R2}				// behoud waarde van m en p
- 8000220:	b406      	push	{r1, r2}
+ 800021e:	b406      	push	{r1, r2}
 	MOVS.N	R1, R0					// R0 en R1 zijn n
- 8000222:	0001      	movs	r1, r0
+ 8000220:	0001      	movs	r1, r0
 	LDR.N	R2, =multiply
- 8000224:	4a05      	ldr	r2, [pc, #20]	; (800023c <return+0xc>)
+ 8000222:	4a05      	ldr	r2, [pc, #20]	; (8000238 <return+0xa>)
 	BLX.N	R2
- 8000226:	4790      	blx	r2
+ 8000224:	4790      	blx	r2
 	POP.N 	{R1, R2}				// volgorde: R0 = n, R1 = m, R2 = p, R3 = x
- 8000228:	bc06      	pop	{r1, r2}
+ 8000226:	bc06      	pop	{r1, r2}
 	LSRS.N	R1, R1, #1
- 800022a:	0849      	lsrs	r1, r1, #1
+ 8000228:	0849      	lsrs	r1, r1, #1
 	CMP.N	R1, #1
- 800022c:	2901      	cmp	r1, #1
+ 800022a:	2901      	cmp	r1, #1
 	BNE.N	while_loop
- 800022e:	d1e8      	bne.n	8000202 <while_loop>
+ 800022c:	d1e8      	bne.n	8000200 <while_loop>
 
-08000230 <return>:
+0800022e <return>:
 return:
 	MOVS.N 	R1, R2					// volgorde R0 = n, R1 = p, R2 = p, R3 = x
- 8000230:	0011      	movs	r1, r2
+ 800022e:	0011      	movs	r1, r2
 	LDR.N	R2, =multiply
- 8000232:	4a02      	ldr	r2, [pc, #8]	; (800023c <return+0xc>)
+ 8000230:	4a01      	ldr	r2, [pc, #4]	; (8000238 <return+0xa>)
 	BLX.N	R2
- 8000234:	4790      	blx	r2
+ 8000232:	4790      	blx	r2
 	POP.N	{PC}
- 8000236:	bd00      	pop	{pc}
+ 8000234:	bd00      	pop	{pc}
 	BX.N 	LR
- 8000238:	4770      	bx	lr
- 800023a:	0000      	.short	0x0000
+ 8000236:	4770      	bx	lr
 	LDR.N	R2, =multiply
- 800023c:	080001e1 	.word	0x080001e1
+ 8000238:	080001e1 	.word	0x080001e1
 
-08000240 <strlen>:
- 8000240:	4603      	mov	r3, r0
- 8000242:	f813 2b01 	ldrb.w	r2, [r3], #1
- 8000246:	2a00      	cmp	r2, #0
- 8000248:	d1fb      	bne.n	8000242 <strlen+0x2>
- 800024a:	1a18      	subs	r0, r3, r0
- 800024c:	3801      	subs	r0, #1
- 800024e:	4770      	bx	lr
+0800023c <strlen>:
+ 800023c:	4603      	mov	r3, r0
+ 800023e:	f813 2b01 	ldrb.w	r2, [r3], #1
+ 8000242:	2a00      	cmp	r2, #0
+ 8000244:	d1fb      	bne.n	800023e <strlen+0x2>
+ 8000246:	1a18      	subs	r0, r3, r0
+ 8000248:	3801      	subs	r0, #1
+ 800024a:	4770      	bx	lr
+ 800024c:	0000      	movs	r0, r0
+	...
 
 08000250 <memchr>:
  8000250:	f001 01ff 	and.w	r1, r1, #255	; 0xff
@@ -374,7 +373,7 @@ int test_random_numbers(int number_of_tests){
 		result_assembly = power(a, b);
  8000388:	6939      	ldr	r1, [r7, #16]
  800038a:	6978      	ldr	r0, [r7, #20]
- 800038c:	f7ff ff31 	bl	80001f2 <power>
+ 800038c:	f7ff ff30 	bl	80001f0 <power>
  8000390:	60f8      	str	r0, [r7, #12]
 		result_c = tothepower(a, b);
  8000392:	6939      	ldr	r1, [r7, #16]
@@ -430,7 +429,7 @@ int test_limits(){
 	result_assembly = power(0, 0);
  80003da:	2100      	movs	r1, #0
  80003dc:	2000      	movs	r0, #0
- 80003de:	f7ff ff08 	bl	80001f2 <power>
+ 80003de:	f7ff ff07 	bl	80001f0 <power>
  80003e2:	60b8      	str	r0, [r7, #8]
 	result_c = tothepower(0, 0);
  80003e4:	2100      	movs	r1, #0
@@ -452,7 +451,7 @@ int test_limits(){
 	result_assembly = power(1, 0);
  80003fc:	2100      	movs	r1, #0
  80003fe:	2001      	movs	r0, #1
- 8000400:	f7ff fef7 	bl	80001f2 <power>
+ 8000400:	f7ff fef6 	bl	80001f0 <power>
  8000404:	60b8      	str	r0, [r7, #8]
 	result_c = tothepower(1, 0);
  8000406:	2100      	movs	r1, #0
@@ -474,7 +473,7 @@ int test_limits(){
 	result_assembly = power(0, 1);
  800041e:	2101      	movs	r1, #1
  8000420:	2000      	movs	r0, #0
- 8000422:	f7ff fee6 	bl	80001f2 <power>
+ 8000422:	f7ff fee5 	bl	80001f0 <power>
  8000426:	60b8      	str	r0, [r7, #8]
 	result_c = tothepower(0, 1);
  8000428:	2101      	movs	r1, #1
@@ -496,7 +495,7 @@ int test_limits(){
 	result_assembly = power(1, 1);
  8000440:	2101      	movs	r1, #1
  8000442:	2001      	movs	r0, #1
- 8000444:	f7ff fed5 	bl	80001f2 <power>
+ 8000444:	f7ff fed4 	bl	80001f0 <power>
  8000448:	60b8      	str	r0, [r7, #8]
 	result_c = tothepower(1, 1);
  800044a:	2101      	movs	r1, #1
@@ -517,7 +516,7 @@ int test_limits(){
 	result_assembly = power(2, 31);
  8000462:	211f      	movs	r1, #31
  8000464:	2002      	movs	r0, #2
- 8000466:	f7ff fec4 	bl	80001f2 <power>
+ 8000466:	f7ff fec3 	bl	80001f0 <power>
  800046a:	60b8      	str	r0, [r7, #8]
 	result_c = tothepower(2, 31);
  800046c:	211f      	movs	r1, #31
@@ -577,8 +576,6 @@ int main(void)
  80004ba:	6839      	ldr	r1, [r7, #0]
  80004bc:	4803      	ldr	r0, [pc, #12]	; (80004cc <main+0x3c>)
  80004be:	f000 fcb7 	bl	8000e30 <iprintf>
-
-
 
     return 0;
  80004c2:	2300      	movs	r3, #0
@@ -1066,7 +1063,7 @@ Infinite_Loop:
  800084e:	bf48      	it	mi
  8000850:	f044 0408 	orrmi.w	r4, r4, #8
  8000854:	9700      	str	r7, [sp, #0]
- 8000856:	f7ff fcf3 	bl	8000240 <strlen>
+ 8000856:	f7ff fcf1 	bl	800023c <strlen>
  800085a:	e9cd 4001 	strd	r4, r0, [sp, #4]
  800085e:	2401      	movs	r4, #1
  8000860:	4620      	mov	r0, r4
