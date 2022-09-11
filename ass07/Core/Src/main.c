@@ -89,7 +89,5 @@ int main(void)
 
 	printf("%d of the %d tests have succeeded\r\n", succesful, (tests_per_test + 5));
 
-
-
     return 0;
 }

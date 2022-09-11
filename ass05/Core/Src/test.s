@@ -19,15 +19,15 @@ skip1:
 	ADDS.N R0, R0, R1			//--> wel gelijk aan 1? Tel a bij m op in return waarde
 	BX.N LR						//--> return naar eerdere laag code
 skip2:
-	MOVS.N R3, #1				//--> Maak R3 gelijk aan b
-	ANDS.N R3, R2				//--> bitmask zodat de eerste bit alleen gezien wordt, return op R3
-	CMP.N R3, #0				//--> is R3 gelijk aan 0?
-	BNE.N skip3					//--> Nee? skip3, Ja, ga door
-	LSLS.N R1, R1, #1			//--> Left shift A met 1 bit
-	LSRS.N R2, R2, #1			//--> right shift B met 1 bit
-	B.N multiply2				//--> recurse de functie door te springen naar de functienaam opnieuw
+	MOVS.N 	R3, #1				//--> Maak R3 gelijk aan b
+	ANDS.N 	R3, R2				//--> bitmask zodat de eerste bit alleen gezien wordt, return op R3
+	CMP.N 	R3, #0				//--> is R3 gelijk aan 0?
+	BNE.N 	skip3					//--> Nee? skip3, Ja, ga door
+	LSLS.N 	R1, R1, #1			//--> Left shift A met 1 bit
+	LSRS.N 	R2, R2, #1			//--> right shift B met 1 bit
+	B.N 	multiply2				//--> recurse de functie door te springen naar de functienaam opnieuw
 skip3:
-	ADDS.N R0, R0, R1			//--> Tel m bij a op
-	LSLS.N R1, R1, #1			//--> Left shift a met 1
-	LSRS.N R2, R2, #1			//--> right shift b met 1
-	B.N multiply2
+	ADDS.N 	R0, R0, R1			//--> Tel m bij a op
+	LSLS.N 	R1, R1, #1			//--> Left shift a met 1
+	LSRS.N 	R2, R2, #1			//--> right shift b met 1
+	B.N 	multiply2
