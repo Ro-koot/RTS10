@@ -394,15 +394,14 @@ LOAD d:/st/stm32cubeide_1.10.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x000000000000228e     0xb953 ./Core/Src/main.o
  .debug_macro   0x000000000000dbe1       0x6d ./Core/Src/main.o
 
-.debug_line     0x0000000000000000      0x5a9
- .debug_line    0x0000000000000000      0x522 ./Core/Src/main.o
- .debug_line    0x0000000000000522       0x87 ./Core/Startup/startup_stm32f411vetx.o
+.debug_line     0x0000000000000000      0x5af
+ .debug_line    0x0000000000000000      0x528 ./Core/Src/main.o
+ .debug_line    0x0000000000000528       0x87 ./Core/Startup/startup_stm32f411vetx.o
 
-.debug_str      0x0000000000000000    0x4faec
- .debug_str     0x0000000000000000    0x4fab6 ./Core/Src/main.o
-                                      0x4fc27 (size before relaxing)
- .debug_str     0x000000000004fab6       0x36 ./Core/Startup/startup_stm32f411vetx.o
-                                         0x97 (size before relaxing)
+.debug_str      0x0000000000000000    0x4fb50
+ .debug_str     0x0000000000000000    0x4fab9 ./Core/Src/main.o
+                                      0x4fc2a (size before relaxing)
+ .debug_str     0x000000000004fab9       0x97 ./Core/Startup/startup_stm32f411vetx.o
 
 .comment        0x0000000000000000       0x50
  .comment       0x0000000000000000       0x50 ./Core/Src/main.o

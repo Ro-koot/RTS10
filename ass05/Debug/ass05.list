@@ -113,30 +113,30 @@ skip1:
 
 080001f6 <skip2>:
 skip2:
-	MOVS.N R3, #1				//--> Maak R3 gelijk aan b
+	MOVS.N 	R3, #1				//--> Maak R3 gelijk aan b
  80001f6:	2301      	movs	r3, #1
-	ANDS.N R3, R2				//--> bitmask zodat de eerste bit alleen gezien wordt, return op R3
+	ANDS.N 	R3, R2				//--> bitmask zodat de eerste bit alleen gezien wordt, return op R3
  80001f8:	4013      	ands	r3, r2
-	CMP.N R3, #0				//--> is R3 gelijk aan 0?
+	CMP.N 	R3, #0				//--> is R3 gelijk aan 0?
  80001fa:	2b00      	cmp	r3, #0
-	BNE.N skip3					//--> Nee? skip3, Ja, ga door
+	BNE.N 	skip3					//--> Nee? skip3, Ja, ga door
  80001fc:	d102      	bne.n	8000204 <skip3>
-	LSLS.N R1, R1, #1			//--> Left shift A met 1 bit
+	LSLS.N 	R1, R1, #1			//--> Left shift A met 1 bit
  80001fe:	0049      	lsls	r1, r1, #1
-	LSRS.N R2, R2, #1			//--> right shift B met 1 bit
+	LSRS.N 	R2, R2, #1			//--> right shift B met 1 bit
  8000200:	0852      	lsrs	r2, r2, #1
-	B.N multiply2				//--> recurse de functie door te springen naar de functienaam opnieuw
+	B.N 	multiply2				//--> recurse de functie door te springen naar de functienaam opnieuw
  8000202:	e7f0      	b.n	80001e6 <multiply2>
 
 08000204 <skip3>:
 skip3:
-	ADDS.N R0, R0, R1			//--> Tel m bij a op
+	ADDS.N 	R0, R0, R1			//--> Tel m bij a op
  8000204:	1840      	adds	r0, r0, r1
-	LSLS.N R1, R1, #1			//--> Left shift a met 1
+	LSLS.N 	R1, R1, #1			//--> Left shift a met 1
  8000206:	0049      	lsls	r1, r1, #1
-	LSRS.N R2, R2, #1			//--> right shift b met 1
+	LSRS.N 	R2, R2, #1			//--> right shift b met 1
  8000208:	0852      	lsrs	r2, r2, #1
-	B.N multiply2
+	B.N 	multiply2
  800020a:	e7ec      	b.n	80001e6 <multiply2>
 
 0800020c <strlen>:

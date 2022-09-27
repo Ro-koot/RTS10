@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := opdr_2_2
+BUILD_ARTIFACT_NAME := opdr_2_5
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-opdr_2_2.elf \
+opdr_2_5.elf \
 
 MAP_FILES += \
-opdr_2_2.map \
+opdr_2_5.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-opdr_2_2.list \
+opdr_2_5.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: opdr_2_2.elf secondary-outputs
+main-build: opdr_2_5.elf secondary-outputs
 
 # Tool invocations
-opdr_2_2.elf opdr_2_2.map: $(OBJS) $(USER_OBJS) C:\Users\Max\ Overvoorde\Documents\School\Hogeschool\ Rotterdam\Jaar\ 4\RTS10\Week\ 2\opdr_2_2\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "opdr_2_2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Max Overvoorde\Documents\School\Hogeschool Rotterdam\Jaar 4\RTS10\Week 2\opdr_2_2\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="opdr_2_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+opdr_2_5.elf opdr_2_5.map: $(OBJS) $(USER_OBJS) C:\Users\Max\ Overvoorde\Documents\School\Hogeschool\ Rotterdam\github\ETS10\1.5\RTS10\opdr_2_5\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "opdr_2_5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Max Overvoorde\Documents\School\Hogeschool Rotterdam\github\ETS10\1.5\RTS10\opdr_2_5\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="opdr_2_5.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-opdr_2_2.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "opdr_2_2.list"
+opdr_2_5.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "opdr_2_5.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) default.size.stdout opdr_2_2.elf opdr_2_2.list opdr_2_2.map
+	-$(RM) default.size.stdout opdr_2_5.elf opdr_2_5.list opdr_2_5.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
