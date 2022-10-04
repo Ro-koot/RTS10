@@ -1,0 +1,4 @@
+"./Core/Src/VersdOS.o"
+"./Core/Src/VersdOS_ll.o"
+"./Core/Src/main.o"
+"./Core/Startup/startup_stm32f411vetx.o"

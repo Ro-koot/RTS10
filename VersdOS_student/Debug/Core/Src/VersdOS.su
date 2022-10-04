@@ -1,0 +1,10 @@
+../Core/Src/VersdOS.c:62:6:idleTask	4	static,ignoring_inline_asm
+../Core/Src/VersdOS.c:72:6:addTaskToListAtIndex	32	static
+../Core/Src/VersdOS.c:125:6:addTaskToList	40	static
+../Core/Src/VersdOS.c:139:6:startVersdOS	32	static,ignoring_inline_asm
+../Core/Src/VersdOS.c:160:8:schedule	24	static
+../Core/Src/VersdOS.c:206:6:SysTick_Handler	8	static
+../Core/Src/VersdOS.c:216:6:PendSV_Handler	0	static
+../Core/Src/VersdOS.c:236:6:SVC_Handler	32	static,ignoring_inline_asm
+../Core/Src/VersdOS.c:277:6:taskYield	4	static,ignoring_inline_asm
+../Core/Src/VersdOS.c:283:6:ChangeSystick	16	static,ignoring_inline_asm
