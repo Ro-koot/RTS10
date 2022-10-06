@@ -1,0 +1,6 @@
+../Core/Src/system_init.c:11:6:Board_Init	8	static
+../Core/Src/system_init.c:20:7:_sbrk	24	static
+../Core/Src/system_init.c:39:13:SystemClock_Config	88	static
+../Core/Src/system_init.c:84:13:MX_GPIO_Init	56	static
+../Core/Src/system_init.c:225:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/system_init.c:242:6:Error_Handler	4	static,ignoring_inline_asm

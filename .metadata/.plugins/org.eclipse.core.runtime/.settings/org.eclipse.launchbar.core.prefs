@@ -1,0 +1,9 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:VersdOS_student,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ass01,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ass02,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ass05,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ass07,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:opdr_1_5,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:opdr_1_7 Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:opdr_2_1 Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:opdr_2_2_no_volatile Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:opdr_2_2 Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:buffer Debug
+eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:VersdOS_student/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:VersdOS_student/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:buffer/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:mqueue/activeLaunchMode=debug

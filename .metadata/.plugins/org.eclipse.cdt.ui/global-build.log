@@ -1,0 +1,31 @@
+12:08:40 **** Incremental Build of configuration Debug for project mqueue ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/ -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/private/ -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/FreeRTOS_POSIX -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/FreeRTOS-Plus-POSIX/include -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/FreeRTOS-Plus-POSIX/include/portable -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/FreeRTOS-Plus-POSIX/include/portable/st/stm32l475_discovery -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main_thread':
+../Core/Src/main.c:186:40: warning: passing argument 3 of 'pthread_create' from incompatible pointer type [-Wincompatible-pointer-types]
+  186 |     check( pthread_create(&ptc, &ptac, consumer, &mqdes) );
+      |                                        ^~~~~~~~
+      |                                        |
+      |                                        void * (*)(void)
+In file included from ../Core/Src/main.c:2:
+../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/FreeRTOS_POSIX/pthread.h:250:30: note: expected 'void * (*)(void *)' but argument is of type 'void * (*)(void)'
+  250 |                     void *( *startroutine )( void * ),
+      |                     ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "mqueue.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"G:\My Drive\minor\GitHub repo\RTS10\mqueue\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mqueue.map" -Wl,--gc-sections -static -specs=rdimon.specs --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: mqueue.elf
+ 
+arm-none-eabi-size   mqueue.elf 
+arm-none-eabi-objdump -h -S  mqueue.elf  > "mqueue.list"
+   text	   data	    bss	    dec	    hex	filename
+  40508	    132	  21004	  61644	   f0cc	mqueue.elf
+Finished building: default.size.stdout
+ 
+Finished building: mqueue.list
+ 
+12:10:17 **** Incremental Build of configuration Debug for project mqueue ****
+make -j12 all 
+arm-none-eabi-size   mqueue.elf 
+   text	   data	    bss	    dec	    hex	filename
+  40508	    132	  21004	  61644	   f0cc	mqueue.elf
+Finished building: default.size.stdout
+ 
