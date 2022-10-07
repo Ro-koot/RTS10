@@ -9,6 +9,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\robbi\Downloads\HR_ELEKTRO-rts10\Opdrachten\mutex\mutex"/>
+			<item value="C:\Users\robbi\Downloads\HR_ELEKTRO-rts10\Opdrachten\mutex"/>
 			<item value="G:\My Drive\minor\GitHub repo\RTS10\mqueue"/>
 			<item value="D:\GitHub repo\RTS10"/>
 		</list>
