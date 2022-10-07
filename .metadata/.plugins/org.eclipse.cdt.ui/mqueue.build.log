@@ -1,4 +1,4 @@
-12:10:17 **** Incremental Build of configuration Debug for project mqueue ****
+11:21:55 **** Incremental Build of configuration Debug for project mqueue ****
 make -j12 all 
 arm-none-eabi-size   mqueue.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   mqueue.elf
 Finished building: default.size.stdout
  
 
-12:10:19 Build Finished. 0 errors, 0 warnings. (took 2s.512ms)
+11:21:58 Build Finished. 0 errors, 0 warnings. (took 3s.5ms)
 

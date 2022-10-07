@@ -1,27 +1,17 @@
-10:40:30 **** Incremental Build of configuration Debug for project 5.3 ****
+12:36:19 **** Incremental Build of configuration Debug for project 5.3 ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/ -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/private/ -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/FreeRTOS_POSIX -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/FreeRTOS-Plus-POSIX/include -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/FreeRTOS-Plus-POSIX/include/portable -I../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/FreeRTOS-Plus-POSIX/include/portable/st/stm32l475_discovery -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main_thread':
-../Core/Src/main.c:152:40: warning: passing argument 3 of 'pthread_create' from incompatible pointer type [-Wincompatible-pointer-types]
-  152 |     check( pthread_create(&ptc, &ptac, consumer, &mqdes) );
-      |                                        ^~~~~~~~
-      |                                        |
-      |                                        void * (*)(void)
-In file included from ../Core/Src/main.c:2:
-../Middlewares/Third_Party/Lab-Project-FreeRTOS-POSIX-master/include/FreeRTOS_POSIX/pthread.h:250:30: note: expected 'void * (*)(void *)' but argument is of type 'void * (*)(void)'
-  250 |                     void *( *startroutine )( void * ),
-      |                     ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "5.3.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"D:\GitHub repo\RTS10\5.3\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="5.3.map" -Wl,--gc-sections -static -specs=rdimon.specs --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: 5.3.elf
  
 arm-none-eabi-size   5.3.elf 
 arm-none-eabi-objdump -h -S  5.3.elf  > "5.3.list"
    text	   data	    bss	    dec	    hex	filename
-  40736	    132	  21012	  61880	   f1b8	5.3.elf
+  40784	    132	  21012	  61928	   f1e8	5.3.elf
 Finished building: default.size.stdout
  
 Finished building: 5.3.list
  
 
-10:40:31 Build Finished. 0 errors, 1 warnings. (took 1s.594ms)
+12:36:20 Build Finished. 0 errors, 0 warnings. (took 1s.657ms)
 

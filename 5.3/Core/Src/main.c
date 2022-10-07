@@ -35,42 +35,38 @@ void check(int error)
 
 
 
-
-
 void *producer(void *arg) // function for producer thread
 {
-
     char c = *(char *)arg;
 //    check_errno( sem_wait(&semPrintf) );
-
+    check( pthread_mutex_lock(&m) );
     check_errno( printf("Thread: %p with argument: %c starts\n", pthread_self(), c) );
+    check( pthread_mutex_unlock(&m) );
 //    check_errno( sem_post(&semPrintf) );
     for (int i = 0; i < 100; ++i)
     {
-    	check( pthread_mutex_lock(&m) );
         check_errno( mq_send(mqdes, (char *)&c, sizeof(c), 0) );
-        check( pthread_mutex_unlock(&m) );
     }
 //    check_errno( sem_wait(&semPrintf) );
-
+    check( pthread_mutex_lock(&m) );
     check_errno( printf("Thread: %p stops\n", pthread_self()) );
 //    check_errno( sem_post(&semPrintf) );
+    check( pthread_mutex_unlock(&m) );
     return NULL;
 }
 
-void *consumer(void) // function for consumer thread
+void *consumer(void *arg) // function for consumer thread
 {
 
 //    check_errno( sem_wait(&semPrintf) );
-
+	check( pthread_mutex_lock(&m) );
     check_errno( printf("Thread: %p starts\n", pthread_self()) );
 //    check_errno( sem_post(&semPrintf) );
+    check( pthread_mutex_unlock(&m) );
     for (int i = 0; i < 200; ++i)
     {
         int msg;
-
         check_errno( mq_receive(mqdes, (char *)&msg, sizeof(msg), NULL) );
-
 //        check_errno( sem_wait(&semPrintf) );
         check( pthread_mutex_lock(&m) );
         check_errno( printf("%c", msg) );
@@ -79,7 +75,6 @@ void *consumer(void) // function for consumer thread
 //        check_errno( sem_post(&semPrintf) );
     }
 //    check_errno( sem_wait(&semPrintf) );
-    check( pthread_mutex_unlock(&m) );
     check_errno( printf("Thread: %p stops\n", pthread_self()) );
 //    check_errno( sem_post(&semPrintf) );
     return NULL;
@@ -111,13 +106,8 @@ void *main_thread(void *arg)
     check_errno( printf("frikandel Producer priority = %d ", priop1) );
     check_errno( printf("Kroket Producer priority = %d\n", priop2) );
 
-
 //    check_errno( sem_init(&semPrintf, 0, 1) ); // allow one thread exclusively to use printf
-
-
 //    vQueueAddToRegistry((QueueHandle_t) &semPrintf.xSemaphore, "semPrintf");
-
-
 
     mqAttrs.mq_maxmsg = 3;
     mqAttrs.mq_msgsize = sizeof(int);
